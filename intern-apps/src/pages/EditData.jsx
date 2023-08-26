@@ -1,6 +1,5 @@
 import React from "react";
 import "./EditData.css";
-import userimg from "../assets/user.png";
 import Delete from "../assets/delete.png";
 import Nav from "../components/nav";
 
