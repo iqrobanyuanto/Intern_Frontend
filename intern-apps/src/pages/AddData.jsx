@@ -1,6 +1,5 @@
 import React from "react";
 import "./AddData.css";
-import userimg from "../assets/user.png";
 import Nav from "../components/nav";
 
 const AddData = () => {
