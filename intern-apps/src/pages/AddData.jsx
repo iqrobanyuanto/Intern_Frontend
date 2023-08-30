@@ -44,9 +44,9 @@ const AddData = () => {
             </div>
             {/*end right side */}
           </div>
-          <div className="add-button mt-5 justify-center flex sm:mt-10">
-            <button className="bg-sky-700 text-white px-6 py-2 mr-5 rounded-md font-poppins sm:mr-10 sm:px-8">Save</button>
-            <button className="bg-red-700 text-white px-4 py-2 rounded-md font-poppins sm:px-6">Cancel</button>
+          <div className="add-button mt-5 justify-center flex sm:mt-8">
+            <button className=" btn bg-sky-700 text-white px-6 py-2 mr-5 rounded-md font-poppins sm:mr-10 sm:px-8 hover:bg-sky-800 border-0 capitalize">Save</button>
+            <button className="btn bg-red-700 text-white px-4 py-2 rounded-md font-poppins sm:px-6 hover:bg-red-800 border-0 capitalize">Cancel</button>
           </div>
         </div>
       </div>

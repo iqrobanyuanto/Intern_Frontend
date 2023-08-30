@@ -40,12 +40,12 @@ const RegisterManager = () => {
           {/*end Alamat */}
 
           {/*button */}
-          <button className="bg-sky-500 w-[250px] font-poppins font-medium text-white py-2 mt-6 rounded-md sm:w-[280px]">Register</button>
+          <button className=" btn bg-sky-500 w-[250px] font-poppins font-medium text-white py-1 mt-6 rounded-md sm:w-[280px] hover:bg-sky-700 border-0 capitalize">Register</button>
           {/*end button */}
 
           <h2 className="text-white font-poppins text-[12px] mt-4 sm:text-[16px]">
             Have an Account ?{" "}
-            <span className="text-sky-500 cursor-pointer" onClick={() => navigate("/LoginManager")}>
+            <span className="btn text-sky-500 cursor-pointer capitalize border-0 p-0 hover:bg-transparent bg-transparent" onClick={() => navigate("/LoginManager")}>
               Login
             </span>
           </h2>

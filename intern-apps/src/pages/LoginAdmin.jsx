@@ -23,7 +23,7 @@ const LoginAdmin = () => {
           {/*end kode */}
 
           {/*button */}
-          <button className="bg-sky-500 w-[250px] font-poppins font-medium text-white py-2 mt-9 rounded-md sm:w-[280px]">SignIn</button>
+          <button className=" btn bg-sky-500 w-[250px] font-poppins font-medium text-white py-2 mt-9 rounded-md sm:w-[280px] capitalize border-0 hover:bg-sky-700">SignIn</button>
           {/*end button */}
         </div>
         <img src={illusAdm} className="loginadm-illus w-[450px] hidden sm:flex" />

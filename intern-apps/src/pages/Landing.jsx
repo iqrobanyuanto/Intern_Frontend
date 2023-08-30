@@ -26,10 +26,10 @@ const Landing = () => {
           </h3>
           {/*Button*/}
           <div className="landing-button flex-col flex sm:flex-row sm:justify-between justify-center gap-7 mt-[5rem] sm:mt-[4rem] ">
-            <button className="text-white border-2 border-white rounded-md py-2 sm:px-10 sm:hover:text-black sm:hover:bg-white" onClick={() => navigate("/loginManager")}>
+            <button className="btn btn-outline text-white font-poppins font-medium border-2 hover:bg-white hover:text-black capitalize sm:px-10 text-sm" onClick={() => navigate("/loginManager")}>
               Manager
             </button>
-            <button className="text-white border-2 border-white rounded-md py-2 sm:px-12 sm:hover:text-black sm:hover:bg-white" onClick={() => navigate("/LoginAdmin")}>
+            <button className="btn btn-outline text-white font-poppins font-medium border-2 hover:bg-white hover:text-black capitalize sm:px-12 text-sm" onClick={() => navigate("/loginAdmin")}>
               Admin
             </button>
           </div>

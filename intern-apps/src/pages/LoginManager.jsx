@@ -30,12 +30,12 @@ const LoginManager = () => {
           {/*end password */}
 
           {/*button */}
-          <button className="bg-sky-500 w-[250px] font-poppins font-medium text-white py-2 mt-9 rounded-md sm:w-[280px]">SignIn</button>
+          <button className="btn bg-sky-500 w-[250px] font-poppins font-medium text-white py-2 mt-9 rounded-md sm:w-[280px] capitalize hover:bg-sky-700 border-0">SignIn</button>
           {/*end button */}
 
           <h2 className="text-white font-poppins text-[12px] mt-8 sm:text-[16px]">
             Don't Have an Account ?{" "}
-            <span className="text-sky-500 cursor-pointer" onClick={() => navigate("/RegisterManager")}>
+            <span className="text-sky-500 cursor-pointer btn bg-transparent p-0 border-0 capitalize hover:bg-transparent" onClick={() => navigate("/RegisterManager")}>
               Register
             </span>
           </h2>
