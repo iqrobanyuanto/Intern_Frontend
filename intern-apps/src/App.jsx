@@ -18,7 +18,7 @@ function App() {
         <Route path="/LoginManager" element={<LoginManager />} />
         <Route path="/RegisterManager" element={<RegisterManager />} />
         <Route path="/LoginAdmin" element={<LoginAdmin />} />
-        <Route path="/EditData" element={<EditData />} />
+        <Route path="/:EditData" element={<EditData />} />
         <Route path="/AddData" element={<AddData />} />
         <Route path="/homeManager" element={<Manager />} />
         <Route path="/homeAdmin" element={<Admin />} />
