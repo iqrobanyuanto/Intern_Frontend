@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./LoginAdmin.css";
 import illusAdm from "../assets/login2.png";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const LoginAdmin = () => {
   // Inisialisasi state dengan properti 'kode'
@@ -37,6 +38,7 @@ const LoginAdmin = () => {
 
         console.log(response.status, response.data);
         console.log(document.cookie);
+        window.location.href = '/homeAdmin'
       })
       .catch((error) => {
         console.error("Error:", error);

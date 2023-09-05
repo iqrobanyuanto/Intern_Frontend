@@ -42,6 +42,8 @@ const LoginManager = () => {
 
         console.log(response.status, response.data);
         console.log(document.cookie);
+
+        navigate('/homeManager')
       })
       .catch((error) => {
         console.error("Error:", error);
