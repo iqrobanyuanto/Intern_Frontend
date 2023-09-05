@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode'
 
 export default function Admin() {
-    const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2OTM3MjY2NzcsInJvbGUiOiJtYW5hZ2VyIiwidXNlcl9pZCI6M30.Qzq9dNNA7eFdD5AR9ApXEz6aaAEiVg0YPe9sFLjId2M';
+    const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2OTM5OTA3ODAsInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOjF9.akKw7Bh8-Ej2tCrF3xedOvNa-8z6dGmXBAk-foRJYeg';
     const [allProduct, setAllProduct] = useState([])
     const [category, setCategory] = useState(null)
     const [search, setSearch] = useState('')
