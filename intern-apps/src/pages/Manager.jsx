@@ -5,7 +5,7 @@ import axios from "axios";
 import jwtDecode from 'jwt-decode'
 
 export default function Manager() {
-    const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2OTM3MjY2NzcsInJvbGUiOiJtYW5hZ2VyIiwidXNlcl9pZCI6M30.Qzq9dNNA7eFdD5AR9ApXEz6aaAEiVg0YPe9sFLjId2M';
+    const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
     const [allProduct, setAllProduct] = useState([])
     const [category, setCategory] = useState(null)
     const [search, setSearch] = useState('')
@@ -18,7 +18,7 @@ export default function Manager() {
             try {
                 const response = await axios.get(getAllUrl, {
                     headers: {
-                        Authorization: token,
+                        Authorization: `Bearer ${token}`,
                     }
                 });
                 const data = await response.data.barangModel;
@@ -28,6 +28,10 @@ export default function Manager() {
             }
         }
         fetchAllData()
+        if (token) {
+            const decode = jwtDecode(token)
+            console.log(decode)
+        }
     }, [])
 
     const handleCategory = (e) => {
@@ -44,7 +48,7 @@ export default function Manager() {
             try {
                 const filterResponse = await axios.get(`https://internbackend-production.up.railway.app/get-product/filter?kategori=${category}`, {
                     headers: {
-                        Authorization: token,
+                        Authorization: `Bearer ${token}`,
                     }
                 })
                 const filteredData = await filterResponse.data.barangModel
@@ -61,7 +65,7 @@ export default function Manager() {
             try {
                 const searchResponse = await axios.get(`https://internbackend-production.up.railway.app/get-product/search?nama=${search}`, {
                     headers: {
-                        Authorization: token,
+                        Authorization: `Bearer ${token}`,
                     }
                 })
                 const searchData = await searchResponse.data.barangModel

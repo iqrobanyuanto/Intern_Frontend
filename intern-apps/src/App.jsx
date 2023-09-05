@@ -9,6 +9,7 @@ import EditData from "./pages/EditData";
 import AddData from "./pages/AddData";
 import Manager from "./pages/Manager";
 import Admin from "./pages/Admin";
+import PrivateRoutes from "./utils/PrivateRoutes";
 
 function App() {
   return (
@@ -18,10 +19,12 @@ function App() {
         <Route path="/LoginManager" element={<LoginManager />} />
         <Route path="/RegisterManager" element={<RegisterManager />} />
         <Route path="/LoginAdmin" element={<LoginAdmin />} />
-        <Route path="/:EditData" element={<EditData />} />
-        <Route path="/AddData" element={<AddData />} />
-        <Route path="/homeManager" element={<Manager />} />
-        <Route path="/homeAdmin" element={<Admin />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/:EditData" element={<EditData />} />
+          <Route path="/AddData" element={<AddData />} />
+          <Route path="/homeManager" element={<Manager />} />
+          <Route path="/homeAdmin" element={<Admin />} />
+        </Route>
       </Routes>
     </Router>
   );
