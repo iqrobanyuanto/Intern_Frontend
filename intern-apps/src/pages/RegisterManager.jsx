@@ -1,10 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RegisterManager.css";
 import illusregister from "../assets/register.png";
+import axios from "axios";
 
 const RegisterManager = () => {
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    telp: "",
+    alamat: "",
+  });
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("https://internbackend-production.up.railway.app/register", formData);
+
+      // Handle the response as needed (e.g., show a success message)
+      console.log("Response:", response.data);
+
+      // Reset the form after successful submission
+      setFormData({
+        username: "",
+        password: "",
+        telp: "",
+        alamat: "",
+      });
+    } catch (error) {
+      // Handle any errors that occur during the request
+      console.error("Error:", error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
   return (
     <div id="register-body">
       {/*body*/}
@@ -21,26 +58,28 @@ const RegisterManager = () => {
 
           {/*username */}
           <h3 className="font-poppins font-medium text-white text-sm mt-[1rem] sm:text-md">Username</h3>
-          <input className="mt-3 w-[250px] bg-transparent border-2 px-2 py-1 rounded-md text-white sm:w-[280px]" placeholder="Username" />
+          <input className="mt-3 w-[250px] bg-transparent border-2 px-2 py-1 rounded-md text-white sm:w-[280px]" placeholder="Username" name="username" value={formData.username} onChange={handleInputChange} />
           {/*end username */}
 
           {/*password */}
           <h3 className="font-poppins font-medium text-white text-sm mt-[1rem] sm:text-md">Password</h3>
-          <input type="password" className="mt-3 w-[250px] bg-transparent border-2 px-2 py-1 rounded-md text-white sm:w-[280px]" placeholder="Password" />
+          <input type="password" className="mt-3 w-[250px] bg-transparent border-2 px-2 py-1 rounded-md text-white sm:w-[280px]" placeholder="Password" name="password" value={formData.password} onChange={handleInputChange} />
           {/*end password */}
 
           {/*Telp */}
           <h3 className="font-poppins font-medium text-white text-sm mt-[1rem] sm:text-md">Telp</h3>
-          <input type="text" className="mt-3 w-[250px] bg-transparent border-2 px-2 py-1 rounded-md text-white sm:w-[280px]" placeholder="Telp" />
+          <input type="text" className="mt-3 w-[250px] bg-transparent border-2 px-2 py-1 rounded-md text-white sm:w-[280px]" placeholder="Telp" name="telp" value={formData.telp} onChange={handleInputChange} />
           {/*end Telp */}
 
           {/*Alamat */}
           <h3 className="font-poppins font-medium text-white text-sm mt-[1rem] sm:text-md">Alamat</h3>
-          <input type="text" className="mt-3 w-[250px] bg-transparent border-2 px-2 py-1 rounded-md text-white sm:w-[280px]" placeholder="Alamat" />
+          <input type="text" className="mt-3 w-[250px] bg-transparent border-2 px-2 py-1 rounded-md text-white sm:w-[280px]" placeholder="Alamat" name="alamat" value={formData.alamat} onChange={handleInputChange} />
           {/*end Alamat */}
 
           {/*button */}
-          <button className=" btn bg-sky-500 w-[250px] font-poppins font-medium text-white py-1 mt-6 rounded-md sm:w-[280px] hover:bg-sky-700 border-0 capitalize">Register</button>
+          <button className="btn bg-sky-500 w-[250px] font-poppins font-medium text-white py-1 mt-6 rounded-md sm:w-[280px] hover:bg-sky-700 border-0 capitalize" onClick={handleSubmit}>
+            Register
+          </button>
           {/*end button */}
 
           <h2 className="text-white font-poppins text-[12px] mt-4 sm:text-[16px]">
@@ -50,7 +89,7 @@ const RegisterManager = () => {
             </span>
           </h2>
         </div>
-        <img src={illusregister} className="register-illus hidden sm:flex w-[500px]" />
+        <img src={illusregister} className="register-illus hidden sm:flex w-[500px]" alt="Registration Illustration" />
       </div>
       {/*end body */}
     </div>
