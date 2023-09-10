@@ -14,6 +14,9 @@ const RegisterManager = () => {
     alamat: "",
   });
 
+  // Insialisasi untuk error message jika username sudah tersedia
+  const [errorMessage, setErrorMessage] = useState()
+
   const handleSubmit = async () => {
     try {
       const response = await axios.post("https://internbackend-production.up.railway.app/register", formData);
@@ -31,6 +34,7 @@ const RegisterManager = () => {
     } catch (error) {
       // Handle any errors that occur during the request
       console.error("Error:", error);
+      setErrorMessage("Username already exist")
     }
   };
 
@@ -81,6 +85,10 @@ const RegisterManager = () => {
             Register
           </button>
           {/*end button */}
+
+          <div>
+            {errorMessage && <p className="text-error mt-4 text-center text-sm">{errorMessage}</p>}
+          </div>
 
           <h2 className="text-white font-poppins text-[12px] mt-4 sm:text-[16px]">
             Have an Account ?{" "}

@@ -30,7 +30,6 @@ export default function Manager() {
         fetchAllData()
         if (token) {
             const decode = jwtDecode(token)
-            console.log(decode)
         }
     }, [])
 
@@ -130,7 +129,7 @@ export default function Manager() {
                                         <h2 className="card-title text-xs sm:text-sm pt-0 capitalize">{e.nama}</h2>
                                         <p className="text-xs">Harga : {e.harga}</p>
                                         <div className="flex flex-row">
-                                            <p className="text-xs stok">Tersedia : {e.jumlah}</p>
+                                            <p className="text-xs stok">Tersedia : {e.jumlah} barang</p>
                                         </div>
                                     </div>
                                 </div>

@@ -7,6 +7,9 @@ import axios from "axios";
 const LoginManager = () => {
   const navigate = useNavigate();
 
+  // Insialisasi untuk error message jika username atau password salah
+  const [errorMessage, setErrorMessage] = useState()
+
   // Inisialisasi state dengan properti 'kode'
   const [state, setState] = useState({
     username: "",
@@ -34,7 +37,7 @@ const LoginManager = () => {
       .post("https://internbackend-production.up.railway.app/login-manager", userData)
       .then((response) => {
         const { token } = response.data; // Ambil token dari respons API
-
+        
         // Simpan token ke dalam cookie dengan nama 'token' dan waktu kedaluwarsa
         const expirationDate = new Date();
         expirationDate.setDate(expirationDate.getDate() + 7); // Contoh: Simpan selama 7 hari
@@ -43,10 +46,11 @@ const LoginManager = () => {
         console.log(response.status, response.data);
         console.log(document.cookie);
 
-        navigate('/homeManager')
+        navigate('/managerHome')
       })
       .catch((error) => {
         console.error("Error:", error);
+        setErrorMessage("Username or password is incorrect")
       });
   };
   return (
@@ -79,6 +83,10 @@ const LoginManager = () => {
               SignIn
             </button>
             {/*end button */}
+
+            <div>
+              {errorMessage && <p className="text-error mt-4 text-center text-sm mb-[-15px]">{errorMessage}</p>}
+            </div>
 
             <h2 className="text-white font-poppins text-[12px] mt-8 sm:text-[16px]">
               Don't Have an Account ?{" "}

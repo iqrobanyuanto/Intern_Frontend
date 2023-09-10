@@ -10,6 +10,10 @@ const LoginAdmin = () => {
     kode: "",
   });
 
+  // Insialisasi untuk error message jika kode admin tidak valid
+  const [errorMessage, setErrorMessage] = useState()
+
+
   // Fungsi untuk meng-handle perubahan input
   const handleChange = (e) => {
     const value = e.target.value;
@@ -38,10 +42,11 @@ const LoginAdmin = () => {
 
         console.log(response.status, response.data);
         console.log(document.cookie);
-        window.location.href = '/homeAdmin'
+        window.location.href = '/adminHome'
       })
       .catch((error) => {
         console.error("Error:", error);
+        setErrorMessage("Invalid Admin code")
       });
   };
 
@@ -70,6 +75,11 @@ const LoginAdmin = () => {
               SignIn
             </button>
             {/*end button */}
+
+            <div>
+              {errorMessage && <p className="text-error mt-2.5 text-center text-sm">{errorMessage}</p>}
+            </div>
+
           </div>
           <img src={illusAdm} className="loginadm-illus w-[450px] hidden sm:flex" />
         </div>

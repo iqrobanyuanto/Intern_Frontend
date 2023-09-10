@@ -49,14 +49,14 @@ const AddData = () => {
 
       console.log("Data berhasil dikirim:", response.data);
 
-      navigate("/homeAdmin");
+      navigate("/adminHome");
     } catch (error) {
       console.error("Error saat mengirim data:", error);
     }
   };
 
   const handleCancel = () => {
-    navigate("/homeAdmin");
+    navigate("/adminHome");
   };
 
   return (
