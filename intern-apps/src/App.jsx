@@ -9,21 +9,27 @@ import EditData from "./pages/EditData";
 import AddData from "./pages/AddData";
 import Manager from "./pages/Manager";
 import Admin from "./pages/Admin";
-import PrivateRoutes from "./utils/PrivateRoutes";
+import PrivateRouteManager from "./utils/PrivateRouteManager";
+import PrivateRouteAdmin from "./utils/PrivateRouteAdmin";
+import PrivateRouteLanding from "./utils/PrivateRouteLanding";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/LoginManager" element={<LoginManager />} />
-        <Route path="/RegisterManager" element={<RegisterManager />} />
-        <Route path="/LoginAdmin" element={<LoginAdmin />} />
-        <Route element={<PrivateRoutes />}>
-          <Route path="/:EditData" element={<EditData />} />
+        <Route element={<PrivateRouteLanding />}>
+          <Route path="/" element={<Landing />} />
+          <Route path="/LoginManager" element={<LoginManager />} />
+          <Route path="/RegisterManager" element={<RegisterManager />} />
+          <Route path="/LoginAdmin" element={<LoginAdmin />} />
+        </Route>
+        <Route element={<PrivateRouteManager />}>
+          <Route path="/managerHome" element={<Manager />} />
+        </Route>
+        <Route element={<PrivateRouteAdmin />}>
+          <Route path="/:idData" element={<EditData />} />
           <Route path="/AddData" element={<AddData />} />
-          <Route path="/homeManager" element={<Manager />} />
-          <Route path="/homeAdmin" element={<Admin />} />
+          <Route path="/adminHome" element={<Admin />} />
         </Route>
       </Routes>
     </Router>

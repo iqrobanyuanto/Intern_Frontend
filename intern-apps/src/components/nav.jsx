@@ -3,16 +3,16 @@ import jwtDecode from "jwt-decode";
 import { useState, useEffect } from "react";
 
 export default function Nav() {
-  const [role, setRole] = useState('')
+  const [userData, setUserData] = useState()
   const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
 
   useEffect(() => {
     if (token) {
-    const decode = jwtDecode(token)
-    setRole(decode.role)
-  }
+      const decode = jwtDecode(token)
+      setUserData(decode)
+    }
   }, [])
-  
+
 
   const handleLogout = () => {
     document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC`
@@ -32,10 +32,10 @@ export default function Nav() {
             </div>
           </label>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40 sm:w-48 items-center">
-            <p className="justify-center font-bold text-lg mb-4 mt-3">{role === "admin" ? "Admin" : "Rifki"}</p>
-            <p className="justify-center font-medium text-sm capitalize">Status : {role}</p>
-            <p className="justify-center font-medium text-sm mt-2.5"></p>
-            <button onClick={handleLogout} className="btn btn-sm logout text-white !text-xs w-28 mt-5 mb-3">Logout</button>
+            <p className="justify-center font-bold text-lg mb-4 mt-3">{userData?.role === "admin" ? "Admin" : userData?.username}</p>
+            <p className="justify-center font-medium text-sm capitalize">Status : {userData?.role}</p>
+            
+            <button onClick={handleLogout} className="btn btn-sm logout text-white !text-sm w-28 mt-5 mb-3 capitalize font-normal">Logout</button>
           </ul>
         </div>
       </div>

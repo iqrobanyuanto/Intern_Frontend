@@ -12,8 +12,8 @@ const EditData = () => {
     .split("; ")
     .find((row) => row.startsWith("token="))
     ?.split("=")[1];
-  const idObject = useParams();
-  const id = parseInt(idObject.EditData);
+  const { idData } = useParams();
+  // const id = parseInt(idObject.EditData);
 
   const [formData, setFormData] = useState({
     nama: "",
@@ -25,7 +25,24 @@ const EditData = () => {
   useEffect(() => {
     // Mengambil data dari API untuk id yang sesuai
     // Anda bisa memasukkan logika GET di sini jika diperlukan, tetapi contoh ini tidak membutuhkannya
-  }, [id, token]);
+    const getDataById = async () => {
+      try {
+        const response = await axios.get(`https://internbackend-production.up.railway.app/get-product/product?id=${idData}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        const data = await response.data.barangModel
+        console.log(data)
+        setFormData(data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getDataById()
+    console.log(idData)
+  }, []);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,7 +69,7 @@ const EditData = () => {
 
     try {
       // Mengirim data ke API untuk melakukan update
-      const response = await axios.put(`https://internbackend-production.up.railway.app/update-product/update?id=${id}`, formData, {
+      const response = await axios.put(`https://internbackend-production.up.railway.app/update-product/update?id=${idData}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -61,7 +78,7 @@ const EditData = () => {
       console.log("Data berhasil dikirim:", response.data);
 
       if (response.data) {
-        navigate("/homeAdmin");
+        navigate("/adminHome");
       }
     } catch (error) {
       console.error("Error saat mengirim data:", error);
@@ -78,7 +95,7 @@ const EditData = () => {
 
     try {
       // Mengirim data ke API untuk melakukan update
-      const response = await axios.delete(`https://internbackend-production.up.railway.app/update-product/delete?id=${id}`, {
+      const response = await axios.delete(`https://internbackend-production.up.railway.app/update-product/delete?id=${idData}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -87,7 +104,7 @@ const EditData = () => {
       console.log("Data berhasil dihapus:", response.data);
 
       if (response.data) {
-        navigate("/homeAdmin");
+        navigate("/adminHome");
       }
     } catch (error) {
       console.error("Error saat mengirim data:", error);
