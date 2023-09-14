@@ -19,10 +19,14 @@ export default function Nav() {
     window.location.href = '/'
   }
 
+  const handleRefresh = () => {
+    window.location.reload()
+  }
+
   return (
     <div className="navbar bg-transparent px-3 sm:px-7 py-6 sm:py-7 ">
       <div className="flex-1">
-        <a className="btn btn-ghost text-white normal-case text-2xl sm:text-[35px]">Industrial</a>
+        <a onClick={handleRefresh} className="btn btn-ghost text-white normal-case text-2xl sm:text-[35px]">Industrial</a>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end mr-1.5 sm:mr-0">
